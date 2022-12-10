@@ -1,0 +1,20 @@
+{
+    "name": "gdpu-it-official-website",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "element-plus": "^2.2.26",
+        "vue": "^3.2.45",
+        "vue-router": "^4.1.6"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^3.2.0",
+        "sass": "^1.56.1",
+        "vite": "^3.2.4"
+    }
+}
