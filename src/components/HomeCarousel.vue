@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-09 21:35:29
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 15:57:43
+ * @ Modified time: 2022-12-10 22:50:00
  * @ Description: home carousel
  -->
 
@@ -20,7 +20,7 @@
             fetch(this.prefix + this.config)
                 .then((response) => response.json())
                 .then((json) => {
-                    console.log(`read config: ${JSON.stringify(json)}`);
+                    console.log(`读取的配置：${JSON.stringify(json)}`);
                     this.images = json;
                 });
         },

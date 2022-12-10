@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-10 18:13:47
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 19:23:45
+ * @ Modified time: 2022-12-10 22:46:38
  * @ Description: login form
  -->
 
@@ -17,7 +17,7 @@
         <el-form-item>
             <el-button
                 type="primary"
-                @click="$emit('submit')"
+                @click="$emit('update:failed', false)"
                 auto-insert-space
             >
                 {{ label }}
@@ -28,12 +28,8 @@
 
 <script>
     export default {
-        emits: {
-            submit: () => {
-                console.warn('login success!');
-                return true;
-            }
-        },
+        emits: ['update:failed'],
+        props: ['failed'],
         data() {
             return {
                 label: '登录',
@@ -54,9 +50,10 @@
         &-button {
             margin: auto;
         }
-
         &-form {
-            margin: 0 1em;
+            &-item {
+                margin: 2em 0;
+            }
         }
     }
 </style>

@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-04 21:52:58
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 19:17:23
+ * @ Modified time: 2022-12-10 22:44:28
  * @ Description: launch dialog
  -->
 
@@ -12,7 +12,7 @@
     </el-button>
     <el-dialog
         v-model="visible"
-        width="20em"
+        width="24em"
         :style="{
             '--el-dialog-border-radius': 'var(--el-border-radius-base)',
             '--el-dialog-box-shadow': 'var(--el-box-shadow-dark)'
@@ -43,8 +43,8 @@
                 </template>
             </el-space>
         </template>
-        <LoginForm v-if="current_tab == '登录'" @submit="visible = false" />
-        <RegisterForm v-else @submit="visible = false" />
+        <LoginForm v-model:failed="visible" v-if="current_tab == '登录'" />
+        <RegisterForm v-model:failed="visible" v-else />
     </el-dialog>
 </template>
 

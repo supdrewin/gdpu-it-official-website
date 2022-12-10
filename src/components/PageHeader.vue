@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:29:08
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 17:54:31
+ * @ Modified time: 2022-12-10 22:48:43
  * @ Description: page header
  -->
 
@@ -77,11 +77,11 @@
         props: { router },
         methods: {
             current_path() {
-                console.log('current path: ' + location.pathname);
+                console.log(`当前位置：${location.pathname}`);
                 return location.pathname;
             },
             search_action(words) {
-                console.warn(`search words: ${words}`);
+                console.warn(`搜索的关键字：${words}`);
             },
             user_action(command) {
                 switch (command) {
@@ -93,7 +93,7 @@
                         this.user.name = undefined;
                         break;
                     default:
-                        console.warn(`unknown command: ${command}`);
+                        console.warn(`未知的指令：${command}`);
                         break;
                 }
             }
