@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:29:08
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 22:48:43
+ * @ Modified time: 2022-12-11 00:41:50
  * @ Description: page header
  -->
 
@@ -89,7 +89,7 @@
                         this.user.center = true;
                         break;
                     case '退出登录':
-                        this.user.avatar = '/avatar.png';
+                        this.user.avatar = this.default_avatar;
                         this.user.name = undefined;
                         break;
                     default:
@@ -101,7 +101,7 @@
         data() {
             return {
                 logo: {
-                    click: () => window.open('/'),
+                    click: () => window.open(import.meta.env.BASE_URL),
                     component: shallowRef(WebsiteLogo),
                     label: 'GDPU'
                 },
@@ -111,7 +111,7 @@
                     placeholder: '输入搜索词'
                 },
                 user: {
-                    avatar: '/avatar.png',
+                    avatar: this.default_avatar,
                     center: false,
                     commands: ['个人中心', '退出登录'],
                     name: undefined
@@ -120,6 +120,10 @@
         },
         mounted() {
             console.log('[vue] PageHeader mounted.');
+        },
+        setup() {
+            const default_avatar = `${import.meta.env.BASE_URL}avatar.png`;
+            return { default_avatar };
         }
     };
 </script>

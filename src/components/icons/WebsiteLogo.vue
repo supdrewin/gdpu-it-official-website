@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:31:18
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 22:50:36
+ * @ Modified time: 2022-12-11 00:31:14
  * @ Description: website logo
  -->
 
@@ -15,7 +15,7 @@
 <script>
     export default {
         created() {
-            fetch(this.image.path)
+            fetch(import.meta.env.BASE_URL + this.image.path)
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(`读取的图片数据：${json}`);
@@ -26,7 +26,7 @@
             return {
                 image: {
                     data: undefined,
-                    path: '/website-logo.json'
+                    path: 'website-logo.json'
                 }
             };
         },

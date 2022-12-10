@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-04 14:17:33
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 21:05:52
+ * @ Modified time: 2022-12-11 00:38:03
  * @ Description: page footer
  -->
 
@@ -53,7 +53,7 @@
                     },
                     releases: {
                         title: '更新日志',
-                        content: '/releases.md'
+                        content: `${import.meta.env.BASE_URL}releases.md`
                     }
                 }
             };

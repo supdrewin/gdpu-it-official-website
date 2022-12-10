@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:27:18
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 18:55:13
+ * @ Modified time: 2022-12-11 00:49:32
  * @ Description: entry point
  */
 
@@ -17,7 +17,5 @@ const app = createApp(App);
 
 app.use(ElementPlus);
 app.use(router);
-
-app.config.unwrapInjectedRef = true;
 
 app.mount('#app');

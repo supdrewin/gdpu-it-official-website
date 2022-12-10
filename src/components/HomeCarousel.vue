@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-09 21:35:29
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 22:50:00
+ * @ Modified time: 2022-12-11 00:35:01
  * @ Description: home carousel
  -->
 
@@ -27,15 +27,12 @@
         data() {
             return {
                 config: 'config.json',
-                images: undefined
+                images: undefined,
+                prefix: `${import.meta.env.BASE_URL}home-carousel/`
             };
         },
         mounted() {
             console.log('[vue] HomeCarousel mounted.');
-        },
-        setup() {
-            const prefix = '/home-carousel/';
-            return { prefix };
         }
     };
 </script>
