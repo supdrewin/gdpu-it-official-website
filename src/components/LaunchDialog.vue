@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-04 21:52:58
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-10 22:44:28
+ * @ Modified time: 2022-12-11 19:52:15
  * @ Description: launch dialog
  -->
 
@@ -32,7 +32,8 @@
                             color:
                                 current_tab == tab
                                     ? 'var(--el-button-active-text-color)'
-                                    : 'var(--el-button-text-color)'
+                                    : 'var(--el-button-text-color)',
+                            'font-size': 'var(--el-font-size-large)'
                         }"
                         @click="current_tab = tab"
                         auto-insert-space
