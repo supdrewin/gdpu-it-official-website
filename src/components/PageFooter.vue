@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-04 14:17:33
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 00:38:03
+ * @ Modified time: 2022-12-11 23:57:27
  * @ Description: page footer
  -->
 
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export default {
         methods: {
             open_url(url) {
@@ -53,13 +55,16 @@
                     },
                     releases: {
                         title: '更新日志',
-                        content: `${import.meta.env.BASE_URL}releases.md`
+                        content: `${BASE_URL}releases.md`
                     }
                 }
             };
         },
         mounted() {
-            console.log('[vue] PageFooter mounted.');
+            this.$message({
+                message: '页脚已加载',
+                type: 'info'
+            });
         }
     };
 </script>

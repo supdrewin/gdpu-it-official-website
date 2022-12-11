@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-10 18:25:08
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 19:41:20
+ * @ Modified time: 2022-12-12 00:05:31
  * @ Description: register form
  -->
 
@@ -27,7 +27,7 @@
         <el-form-item>
             <el-button
                 v-for="(button, label) in buttons"
-                :loading="button.loading"
+                :loading="label == '注册' ? loading : false"
                 :type="button.type"
                 @click="button.click"
                 auto-insert-space
@@ -39,27 +39,50 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export default {
         emits: ['update:failed'],
         props: ['failed'],
         methods: {
             query_username(_rule, value, callback) {
-                console.warn(`从数据库中查找用户名：${value}`);
-                // callback(new Error('用户名已存在'));
-                callback();
+                this.$message({
+                    message: `从数据库中查找用户名：${value}`,
+                    type: 'warning'
+                });
+                if ('数据库'.includes(value)) {
+                    callback(new Error('用户名已存在'));
+                } else {
+                    callback();
+                }
             },
             reset_form() {
                 this.$refs.__form?.resetFields();
             },
             submit_form() {
                 this.$refs.__form?.validate((valid) => {
-                    this.buttons.注册.loading = true;
+                    this.loading = true;
                     if (valid) {
-                        console.warn('正在验证用户是否为机器人');
-                        console.warn('将新用户数据写入数据库');
+                        axios({
+                            data: this.form,
+                            method: 'post',
+                            url: `${BASE_URL}sql/register`
+                        }).then((response) => {
+                            let message = '注册成功！';
+                            if (response.data == message) {
+                                this.$message({ message, type: 'success' });
+                                this.$emit('update:failed', false);
+                            } else {
+                                this.$message({
+                                    message: '注册失败！',
+                                    type: 'error'
+                                });
+                            }
+                        });
                     }
-                    this.$emit('update:failed', !valid);
-                    this.buttons.注册.loading = false;
+                    this.loading = false;
                 });
             }
         },
@@ -68,12 +91,10 @@
                 buttons: {
                     注册: {
                         click: this.submit_form,
-                        loading: false,
                         type: 'primary'
                     },
                     清空: {
                         click: this.reset_form,
-                        loading: false,
                         type: 'danger'
                     }
                 },
@@ -82,6 +103,7 @@
                     password: undefined,
                     confirm: undefined
                 },
+                loading: false,
                 rules: {
                     username: [
                         {
@@ -129,7 +151,10 @@
             };
         },
         mounted() {
-            console.log('[vue] RegisterForm mounted.');
+            this.$message({
+                message: '注册表单已加载',
+                type: 'info'
+            });
         }
     };
 </script>

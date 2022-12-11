@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:29:08
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 00:41:50
+ * @ Modified time: 2022-12-11 23:55:48
  * @ Description: page header
  -->
 
@@ -72,16 +72,20 @@
     import LaunchDialog from './LaunchDialog.vue';
     import WebsiteLogo from './icons/WebsiteLogo.vue';
 
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export default {
         components: { LaunchDialog },
         props: { router },
         methods: {
             current_path() {
-                console.log(`当前位置：${location.pathname}`);
-                return location.pathname;
+                return location.pathname.replace(BASE_URL, '/');
             },
             search_action(words) {
-                console.warn(`搜索的关键字：${words}`);
+                this.$message({
+                    message: `搜索的关键字：${words}`,
+                    type: 'warning'
+                });
             },
             user_action(command) {
                 switch (command) {
@@ -93,7 +97,10 @@
                         this.user.name = undefined;
                         break;
                     default:
-                        console.warn(`未知的指令：${command}`);
+                        this.$message({
+                            message: `未知的指令：${command}`,
+                            type: 'error'
+                        });
                         break;
                 }
             }
@@ -101,7 +108,7 @@
         data() {
             return {
                 logo: {
-                    click: () => window.open(import.meta.env.BASE_URL),
+                    click: () => window.open(BASE_URL),
                     component: shallowRef(WebsiteLogo),
                     label: 'GDPU'
                 },
@@ -119,10 +126,13 @@
             };
         },
         mounted() {
-            console.log('[vue] PageHeader mounted.');
+            this.$message({
+                message: '页头已加载',
+                type: 'info'
+            });
         },
         setup() {
-            const default_avatar = `${import.meta.env.BASE_URL}avatar.png`;
+            const default_avatar = `${BASE_URL}avatar.png`;
             return { default_avatar };
         }
     };

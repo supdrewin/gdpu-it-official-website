@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-09 21:35:29
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 00:35:01
+ * @ Modified time: 2022-12-11 23:58:10
  * @ Description: home carousel
  -->
 
@@ -15,12 +15,13 @@
 </template>
 
 <script>
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export default {
         created() {
             fetch(this.prefix + this.config)
                 .then((response) => response.json())
                 .then((json) => {
-                    console.log(`读取的配置：${JSON.stringify(json)}`);
                     this.images = json;
                 });
         },
@@ -28,11 +29,14 @@
             return {
                 config: 'config.json',
                 images: undefined,
-                prefix: `${import.meta.env.BASE_URL}home-carousel/`
+                prefix: `${BASE_URL}home-carousel/`
             };
         },
         mounted() {
-            console.log('[vue] HomeCarousel mounted.');
+            this.$message({
+                message: '主页幻灯片已加载',
+                type: 'info'
+            });
         }
     };
 </script>

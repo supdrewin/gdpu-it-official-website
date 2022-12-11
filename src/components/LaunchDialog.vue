@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-04 21:52:58
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 19:52:15
+ * @ Modified time: 2022-12-11 23:39:05
  * @ Description: launch dialog
  -->
 
@@ -68,7 +68,10 @@
             };
         },
         mounted() {
-            console.log('[vue] LaunchDialog mounted.');
+            this.$message({
+                message: `${this.title}对话框已加载`,
+                type: 'info'
+            });
         }
     };
 </script>

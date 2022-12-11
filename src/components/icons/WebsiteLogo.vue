@@ -2,7 +2,7 @@
  * @ Author: supdrewin
  * @ Create Time: 2022-12-03 21:31:18
  * @ Modified by: supdrewin
- * @ Modified time: 2022-12-11 00:31:14
+ * @ Modified time: 2022-12-11 23:58:30
  * @ Description: website logo
  -->
 
@@ -13,12 +13,13 @@
 </template>
 
 <script>
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export default {
         created() {
-            fetch(import.meta.env.BASE_URL + this.image.path)
+            fetch(BASE_URL + this.image.path)
                 .then((response) => response.json())
                 .then((json) => {
-                    console.log(`读取的图片数据：${json}`);
                     this.image.data = json;
                 });
         },
@@ -31,7 +32,10 @@
             };
         },
         mounted() {
-            console.log('[vue] WebsiteLogo mounted.');
+            this.$message({
+                message: '网站图标已加载',
+                type: 'info'
+            });
         }
     };
 </script>
