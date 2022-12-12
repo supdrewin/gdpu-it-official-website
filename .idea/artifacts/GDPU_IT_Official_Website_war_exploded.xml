@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="GDPU IT Official Website:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/GDPU_IT_Official_Website_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="GDPU IT Official Website/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="GDPU IT Official Website" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mybatis" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
